@@ -1,31 +1,39 @@
-// Define global variable 
-let navbarCategories = {
-  theStore: "The Store",
-  cart: "Cart",
-  eyewear: "Eyewear",
-  sunglasses: "Sunglasses",
-  accessories: "Accessories",
-  cleaning: "Cleaning"
-};
+let electronics = document.getElementById("electronics")
 
-// Define Display Div
-let div = {
-
-}
 
 // variable that will hold API URL
-
-async function fakeStore(endpoint) {
-  const reponse = await fetch ('https://fakestoreapi.com/products')
-  const data = await response.json();
+async function getfakeStore(endpoint) {
+  const response = await fetch ('https://fakestoreapi.com/products'+ endpoint)
+  let data = await response.json();
 
   console.log(data);
 
   // Fix errors in function 
-  return data;
-}catch (error) {
+  // return data;
 
-  console.error('Error:', error);
-  throw error;
+
+  // console.error('Error:', error);
+  // throw error;
 
 }
+
+window.onload = (event) => {
+  getfakeStore("/");
+};
+
+electronics.addEventListener("click", (e) => {
+  getfakeStore("/category/electronics")
+});
+jewelery.addEventListener("click", (e) => {
+  getfakeStore("/category/jewelery")
+});
+mensclothing.addEventListener("click", (e) => {
+  getfakeStore("/category/men's clothing")
+});
+womensclothing.addEventListener("click", (e) => {
+  getfakeStore("/category/women's clothing")
+});
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+
+// });
