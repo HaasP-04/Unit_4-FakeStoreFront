@@ -1,11 +1,12 @@
 let electronics = document.getElementById("electronics");
-let jewerely = document.getElementById("jewerely");
+let jewelery = document.getElementById("jewelery");
 let mens = document.getElementById("mens");
 let womens = document.getElementById("womens");
 let display = document.getElementById("display");
 
 function displayCards(products) {
   products.forEach((product) => {
+    console.log(product.title)
 
     let card = document.createElement("div");
     card.className = "card";
@@ -24,35 +25,36 @@ function displayCards(products) {
     
     let cardtitle = document.createElement("h5");
     cardtitle.className = "card-title";
-    cardtitle.innerText = "Card Title";
+    cardtitle.innerText = product.title;
     cardbody.appendChild(cardtitle);
     
     let cardtext = document.createElement("p");
     cardtext.className = "card-text";
-    cardtext.innerText =
-    "Some quick example text to build on the card title and make up the bulk of the card's content.";
+    cardtext.innerText = product.description;
     cardbody.appendChild(cardtext);
 
-    let listgrouplistgroupflush = document.createComment("ul");
-    ul.className = "list-group lsit-group-flush";
+    let listgrouplistgroupflush = document.createElement("ul");
+    listgrouplistgroupflush.className = "listgrouplistgroupflush";
     card.appendChild(listgrouplistgroupflush);
 
     let listgroupitem1 = document.createElement("li");
-    li.className = "lsit-group-item";
-    li.innerText = "Description";
+    listgroupitem1.className = "lsit-group-item1";
+    listgroupitem1.innerText = "Description";
     listgrouplistgroupflush.appendChild(listgroupitem1);
     
     let listgroupitem2 = document.createElement("li");
-    li.className = "lsit-group-item";
-    li.innerText = "Price";
+    listgroupitem2.className = "lsit-group-item2";
+    listgroupitem2.innerText = product.price;
     listgrouplistgroupflush.appendChild(listgroupitem2);
 
     let cardbody2 = document.createElement("div");
     cardbody2.className = "card-body2";
     card.appendChild(cardbody2);
 
-    
-
+    let productCart = document.createElement("a");
+    productCart.className = "btn btn-primary";
+    productCart.innerText = "Add to Cart"
+    cardbody2.appendChild(productCart);
   
 
 
@@ -82,14 +84,14 @@ window.onload = (event) => {
 electronics.addEventListener("click", (e) => {
   getfakeStore("/category/electronics");
 });
-jewerely.addEventListener("click", (e) => {
-  getfakeStore("/category/jewerely");
+jewelery.addEventListener("click", (e) => {
+  getfakeStore("/category/jewelery");
 });
 mens.addEventListener("click", (e) => {
-  getfakeStore("/category/mens");
+  getfakeStore("/category/men's clothing");
 });
 womens.addEventListener("click", (e) => {
-  getfakeStore("/category/womens");
+  getfakeStore("/category/women's clothing");
 });
 // form.addEventListener("submit", (e) => {
 //   e.preventDefault();
