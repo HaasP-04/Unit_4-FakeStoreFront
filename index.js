@@ -8,6 +8,8 @@ function displayCards(products) {
   products.forEach((product) => {
     console.log(product.title)
 
+    //? Appending Displaying Cards 
+
     let card = document.createElement("div");
     card.className = "card";
     card.style = "width: 18rem";
@@ -27,11 +29,45 @@ function displayCards(products) {
     cardtitle.className = "card-title";
     cardtitle.innerText = product.title;
     cardbody.appendChild(cardtitle);
+
+    let accordion = document.createElement("div");
+    accordion.className = "accordion";
+    accordion.id = "accordionExample";
+    cardbody.appendChild(accordion);
+
+    let accordionitem = document.createElement("div");
+    accordionitem.className = "accordion-item";
+    accordion.appendChild(accordionitem);
+
+    let accordionheader = document.createElement("h2");
+    accordionheader.className = "accordion-header";
+    accordionitem.appendChild(accordionheader);
+
+    let accordionbutton = document.createElement("button");
+    accordionbutton.className = "accordio-button";
+    accordionbutton.type = "button";
+    accordionbutton.databstoggle = "collapse";
+    accordionbutton.databstarget = "collapseOne";
+    accordionbutton.ariaExpanded = "true";
+    accordionbutton.ariaControls ="collapseOne"
+    accordionheader.appendChild(accordionbutton);
+
+    let accordioncollapsecollapseshow = document.createElement("div");
+    accordioncollapsecollapseshow.id = "collapseOne";
+    accordioncollapsecollapseshow.className ="accordion-collapse collapse show";
+    accordioncollapsecollapseshow.databsparent = "#accordionExample"
+    accordionitem.appendChild(accordioncollapsecollapseshow);
+
+    let accordionbody = document.createElement("div");
+    accordionbody.className = "accordion-body";
+    accordioncollapsecollapseshow.appendChild(accordionbody);
+    accordionbody.appendChild(listgroupitem1);
+
     
-    let cardtext = document.createElement("p");
-    cardtext.className = "card-text";
-    cardtext.innerText = product.description;
-    cardbody.appendChild(cardtext);
+    // let cardtext = document.createElement("p");
+    // cardtext.className = "card-text";
+    // cardtext.innerText = product.description;
+    // cardbody.appendChild(cardtext);
 
     let listgrouplistgroupflush = document.createElement("ul");
     listgrouplistgroupflush.className = "listgrouplistgroupflush";
@@ -39,7 +75,7 @@ function displayCards(products) {
 
     let listgroupitem1 = document.createElement("li");
     listgroupitem1.className = "lsit-group-item1";
-    listgroupitem1.innerText = "Description";
+    listgroupitem1.innerText = product.description;
     listgrouplistgroupflush.appendChild(listgroupitem1);
     
     let listgroupitem2 = document.createElement("li");
@@ -47,14 +83,14 @@ function displayCards(products) {
     listgroupitem2.innerText = product.price;
     listgrouplistgroupflush.appendChild(listgroupitem2);
 
-    let cardbody2 = document.createElement("div");
-    cardbody2.className = "card-body2";
-    card.appendChild(cardbody2);
+    let dgridgap2 = document.createElement("div");
+    dgridgap2.className = "d-grid gap-2";
+    card.appendChild(dgridgap2);
 
     let productCart = document.createElement("a");
-    productCart.className = "btn btn-primary";
+    productCart.className = "btn btn-dark";
     productCart.innerText = "Add to Cart"
-    cardbody2.appendChild(productCart);
+    dgridgap2.appendChild(productCart);
   
 
 
@@ -77,9 +113,12 @@ async function getfakeStore(endpoint) {
   displayCards(data);
 }
 
+
 window.onload = (event) => {
   getfakeStore("/");
 };
+
+//? endpoints for categories 
 
 electronics.addEventListener("click", (e) => {
   getfakeStore("/category/electronics");
