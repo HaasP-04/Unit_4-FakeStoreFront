@@ -1,18 +1,25 @@
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x:  hidden;
-}
-
-nav {
+form {
   width: 100%;
+  background-color: #ac5353;
+  overflow: hidden;
   position: sticky;
+
 }
 
-div {
-  text-align: center;
-  margin-top: 2.5;
+#display {
+  display: grid;
+  justify-content: space-evenly;
+  background-color: #ac5353;
+  grid-template-columns: auto auto auto auto; 
+  padding: 30px;
+  gap: 30px;
+  
+}
+
+body {
+ 
+  align-items:center;
+
 }
 
 footer {
