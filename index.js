@@ -3,10 +3,10 @@ let jewelery = document.getElementById("jewelery");
 let mens = document.getElementById("mens");
 let womens = document.getElementById("womens");
 let display = document.getElementById("display");
+let cart = [];
 
 function displayCards(products) {
   products.forEach((product) => {
-    console.log(product.title)
 
     //? Appending Displaying Cards 
 
@@ -131,6 +131,15 @@ function displayCards(products) {
     let productCart = document.createElement("button");
     productCart.className = "btn btn-dark";
     productCart.innerText = "Add to Cart"
+    productCart.onclick = () => {
+      const item = {
+        id: product.id,
+        title: product.title,
+        cost: product.price,
+        quantity:1,
+      }
+      submitToCart(item);
+    }
 
 
     
@@ -188,8 +197,19 @@ window.onload = (event) => {
   getfakeStore("/");
 };
 
-async function submitToCart() {
-  
+ function submitToCart(item) {
+  if (cart.length >0) {
+    cart.forEach((obj) => {
+      if(obj.id === item.id){
+        obj.quantity +=1
+      }else{
+        cart.push(item)
+      }
+    })
+  }else{
+    cart.push(item)
+  }
+  console.log(cart)
 }
 
 //? endpoints for categories 
@@ -206,6 +226,8 @@ mens.addEventListener("click", (e) => {
 womens.addEventListener("click", (e) => {
   getfakeStore("/category/women's clothing");
 });
+
+
 // form.addEventListener("submit", (e) => {
 //   e.preventDefault();
 
